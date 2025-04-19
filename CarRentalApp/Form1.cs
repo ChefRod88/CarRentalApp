@@ -19,49 +19,56 @@ namespace CarRentalApp
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            string customerName = tbCustomerName.Text;
-            var dateOut = DateRented.Value;
-            var dateIn = DateReturned.Value;
-            string carType = TypeOfCar.SelectedItem?.ToString();
-            bool isValid = true;
-            StringBuilder errors = new StringBuilder();
+            try
+            {
+                string customerName = tbCustomerName.Text;
+                var dateOut = DateRented.Value;
+                var dateIn = DateReturned.Value;
+                string carType = TypeOfCar.Text;
+                bool isValid = true;
+                double cost = Convert.ToDouble(tbCost.Text);
+                var errorMessage = "";
 
-            // Validate customer name and car type
-            if (string.IsNullOrWhiteSpace(customerName) || string.IsNullOrWhiteSpace(carType))
-            {
-                errors.AppendLine("Please enter missing data.");
-                isValid = false;
-            }
 
-            // Validate dates
-            if (dateOut > dateIn)
-            {
-                errors.AppendLine("Illegal Date Selection.");
-                isValid = false;
-            }
+                // Validate customer name and car type
+                if (string.IsNullOrWhiteSpace(customerName) || string.IsNullOrWhiteSpace(carType))
+                {
+                    isValid = false;
+                    errorMessage += "Error: Please enter missing data.\n\r";
+                }
 
-            // Validate cost
-            double cost;
-            if (!double.TryParse(tbCost.Text, out cost))
-            {
-                errors.AppendLine("Please enter a valid numeric cost.");
-                isValid = false;
-            }
+                // Validate dates
+                if (dateOut > dateIn)
+                {
+                    isValid = false;
+                    errorMessage += "Error: Illegal Date Selection.\n\r";
+                    
+                }
 
-            // Show errors or display final message
-            if (!isValid)
-            {
-                MessageBox.Show(errors.ToString(), "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               
+
+                // Show errors or display final message
+                if (isValid)
+                {
+                    MessageBox.Show($"Customer Name: {customerName}\n\r" +
+                                    $"Date Rented: {dateOut:d}\n\r" +
+                                    $"Date Returned: {dateIn:d}\n\r" +
+                                    $"Cost: {cost}\n\r" +
+                                    $"Car Type: {carType}\n\r" +
+                                    $"THANK YOU FOR YOUR BUSINESS", "Rental Summary");
+                }
+                else
+                {
+                    MessageBox.Show(errorMessage);
+                }
+                
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show($"Customer Name: {customerName}\n\r" +
-                                $"Date Rented: {dateOut:d}\n\r" +
-                                $"Date Returned: {dateIn:d}\n\r" +
-                                $"Cost: {cost:C}\n\r" +
-                                $"Car Type: {carType}\n\r" +
-                                $"THANK YOU FOR YOUR BUSINESS", "Rental Summary", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message);
+                //throw;
             }
+           
         }
     }
 }
