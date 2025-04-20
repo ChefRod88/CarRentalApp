@@ -109,11 +109,6 @@
             // 
             this.TypeOfCar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TypeOfCar.FormattingEnabled = true;
-            this.TypeOfCar.Items.AddRange(new object[] {
-            "Honda",
-            "Toyota",
-            "BMW",
-            "Chevy"});
             this.TypeOfCar.Location = new System.Drawing.Point(90, 257);
             this.TypeOfCar.Name = "TypeOfCar";
             this.TypeOfCar.Size = new System.Drawing.Size(272, 21);
@@ -164,7 +159,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(909, 526);
+            this.ClientSize = new System.Drawing.Size(775, 499);
             this.Controls.Add(this.tb);
             this.Controls.Add(this.tbCost);
             this.Controls.Add(this.SubmitButton);
