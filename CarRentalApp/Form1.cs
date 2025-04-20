@@ -12,9 +12,11 @@ namespace CarRentalApp
 {
     public partial class Form1 : Form
     {
+        private readonly CarRentalEntities carRentalEntities;
         public Form1()
         {
             InitializeComponent();
+            carRentalEntities = new CarRentalEntities();
         }
 
         private void SubmitButton_Click(object sender, EventArgs e)
@@ -69,6 +71,15 @@ namespace CarRentalApp
                 //throw;
             }
            
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // Select * from TypesOfCars
+            var cars = carRentalEntities.TypesOfCars.ToList();
+            TypeOfCar.DisplayMember = "Name";
+            TypeOfCar.ValueMember = "id";
+            TypeOfCar.DataSource = cars; 
         }
     }
 }
