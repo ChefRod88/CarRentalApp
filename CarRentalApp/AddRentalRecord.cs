@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace CarRentalApp
 {
-    public partial class Form1 : Form
+    public partial class AddRentalRecord : Form
     {
         private readonly CarRentalEntitiesUpdated carRentalEntities;
-        public Form1()
+        public AddRentalRecord()
         {
             InitializeComponent();
             carRentalEntities = new CarRentalEntitiesUpdated();
@@ -97,6 +97,10 @@ namespace CarRentalApp
             TypeOfCar.DataSource = cars; 
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+        }
     }
 }

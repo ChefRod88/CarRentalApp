@@ -1,6 +1,6 @@
 ﻿namespace CarRentalApp
 {
-    partial class Form1
+    partial class AddRentalRecord
     {
         /// <summary>
         /// Required designer variable.
@@ -40,6 +40,7 @@
             this.SubmitButton = new System.Windows.Forms.Button();
             this.tbCost = new System.Windows.Forms.TextBox();
             this.tb = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -154,12 +155,23 @@
             this.tb.TabIndex = 11;
             this.tb.Text = "Cost:";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(91, 317);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(154, 56);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Launch Main Window";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(775, 499);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tb);
             this.Controls.Add(this.tbCost);
             this.Controls.Add(this.SubmitButton);
@@ -194,6 +206,7 @@
         private System.Windows.Forms.Button SubmitButton;
         private System.Windows.Forms.TextBox tbCost;
         private System.Windows.Forms.Label tb;
+        private System.Windows.Forms.Button button1;
     }
 }
 

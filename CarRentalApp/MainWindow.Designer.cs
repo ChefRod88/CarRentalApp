@@ -35,11 +35,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(292, 9);
+            this.label1.Location = new System.Drawing.Point(266, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(232, 36);
+            this.label1.Size = new System.Drawing.Size(176, 36);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Car Rental System";
+            this.label1.Text = "Main Window";
             // 
             // MainWindow
             // 
@@ -48,7 +48,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label1);
             this.Name = "MainWindow";
-            this.Text = "MainWindow";
+            this.Text = "Main Window";
             this.ResumeLayout(false);
             this.PerformLayout();
 

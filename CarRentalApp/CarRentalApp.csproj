@@ -76,11 +76,11 @@
     <Compile Include="CarRentalRecord.cs">
       <DependentUpon>CarRentalDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="AddRentalRecord.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AddRentalRecord.Designer.cs">
+      <DependentUpon>AddRentalRecord.cs</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
@@ -93,8 +93,8 @@
     <Compile Include="TypesOfCar.cs">
       <DependentUpon>CarRentalDb.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="AddRentalRecord.resx">
+      <DependentUpon>AddRentalRecord.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
