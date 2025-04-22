@@ -14,9 +14,16 @@ namespace CarRentalApp
     
     public partial class TypesOfCar
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TypesOfCar()
+        {
+            this.CarRentalRecords = new HashSet<CarRentalRecord>();
+        }
+    
         public int id { get; set; }
         public string name { get; set; }
     
-        public virtual CarRentalRecord CarRentalRecord { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CarRentalRecord> CarRentalRecords { get; set; }
     }
 }

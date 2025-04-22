@@ -12,11 +12,11 @@ namespace CarRentalApp
 {
     public partial class Form1 : Form
     {
-        private readonly CarRentalEntities carRentalEntities;
+        private readonly CarRentalEntitiesUpdated carRentalEntities;
         public Form1()
         {
             InitializeComponent();
-            carRentalEntities = new CarRentalEntities();
+            carRentalEntities = new CarRentalEntitiesUpdated();
         }
 
         private void SubmitButton_Click(object sender, EventArgs e)
@@ -49,9 +49,24 @@ namespace CarRentalApp
 
                
 
-                // Show errors or display final message
+                
                 if (isValid)
                 {
+                    var rentalRecord = new CarRentalRecord();
+                    rentalRecord.CustomerName = customerName;
+                    rentalRecord.DateRented = dateOut;
+                    rentalRecord.DateReturned = dateIn;
+                    rentalRecord.Cost = (decimal)cost;
+                    rentalRecord.TypesOfCarId = (int)TypeOfCar.SelectedValue;
+
+                    
+                    
+                    carRentalEntities.CarRentalRecords.Add(rentalRecord);
+                    carRentalEntities.SaveChanges();
+                    
+                  
+                    
+
                     MessageBox.Show($"Customer Name: {customerName}\n\r" +
                                     $"Date Rented: {dateOut:d}\n\r" +
                                     $"Date Returned: {dateIn:d}\n\r" +
@@ -81,5 +96,7 @@ namespace CarRentalApp
             TypeOfCar.ValueMember = "id";
             TypeOfCar.DataSource = cars; 
         }
+
+        
     }
 }
