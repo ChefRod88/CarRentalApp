@@ -30,10 +30,6 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.manageVehicleListingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeVehichleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewListingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageRentalRecordsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addRentalRecordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewArchiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,38 +50,10 @@
             // 
             // manageVehicleListingToolStripMenuItem
             // 
-            this.manageVehicleListingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addVehicleToolStripMenuItem,
-            this.removeVehichleToolStripMenuItem,
-            this.editVehicleToolStripMenuItem,
-            this.viewListingToolStripMenuItem});
             this.manageVehicleListingToolStripMenuItem.Name = "manageVehicleListingToolStripMenuItem";
             this.manageVehicleListingToolStripMenuItem.Size = new System.Drawing.Size(140, 20);
             this.manageVehicleListingToolStripMenuItem.Text = "Manage Vehicle Listing";
-            // 
-            // addVehicleToolStripMenuItem
-            // 
-            this.addVehicleToolStripMenuItem.Name = "addVehicleToolStripMenuItem";
-            this.addVehicleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.addVehicleToolStripMenuItem.Text = "Add Vehicle";
-            // 
-            // removeVehichleToolStripMenuItem
-            // 
-            this.removeVehichleToolStripMenuItem.Name = "removeVehichleToolStripMenuItem";
-            this.removeVehichleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.removeVehichleToolStripMenuItem.Text = "Remove Vehicle";
-            // 
-            // editVehicleToolStripMenuItem
-            // 
-            this.editVehicleToolStripMenuItem.Name = "editVehicleToolStripMenuItem";
-            this.editVehicleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.editVehicleToolStripMenuItem.Text = "Edit Vehicle";
-            // 
-            // viewListingToolStripMenuItem
-            // 
-            this.viewListingToolStripMenuItem.Name = "viewListingToolStripMenuItem";
-            this.viewListingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.viewListingToolStripMenuItem.Text = "View Listing";
+            this.manageVehicleListingToolStripMenuItem.Click += new System.EventHandler(this.manageVehicleListingToolStripMenuItem_Click);
             // 
             // manageRentalRecordsToolStripMenuItem
             // 
@@ -100,20 +68,20 @@
             // addRentalRecordToolStripMenuItem
             // 
             this.addRentalRecordToolStripMenuItem.Name = "addRentalRecordToolStripMenuItem";
-            this.addRentalRecordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addRentalRecordToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.addRentalRecordToolStripMenuItem.Text = "Add Rental Record";
             this.addRentalRecordToolStripMenuItem.Click += new System.EventHandler(this.addRentalRecordToolStripMenuItem_Click);
             // 
             // viewArchiveToolStripMenuItem
             // 
             this.viewArchiveToolStripMenuItem.Name = "viewArchiveToolStripMenuItem";
-            this.viewArchiveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewArchiveToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.viewArchiveToolStripMenuItem.Text = "View Archive";
             // 
             // editRentalRecordToolStripMenuItem
             // 
             this.editRentalRecordToolStripMenuItem.Name = "editRentalRecordToolStripMenuItem";
-            this.editRentalRecordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editRentalRecordToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.editRentalRecordToolStripMenuItem.Text = "Edit Rental Record";
             // 
             // MainWindow
@@ -137,10 +105,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem manageVehicleListingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addVehicleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeVehichleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editVehicleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewListingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageRentalRecordsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addRentalRecordToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewArchiveToolStripMenuItem;

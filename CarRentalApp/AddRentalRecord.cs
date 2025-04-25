@@ -12,11 +12,11 @@ namespace CarRentalApp
 {
     public partial class AddRentalRecord : Form
     {
-        private readonly CarRentalEntitiesUpdated carRentalEntities;
+        private readonly CarRentalEntitiesUpdated carRentalEntities; // declared object which reprensents connection to the database
         public AddRentalRecord()
         {
             InitializeComponent();
-            carRentalEntities = new CarRentalEntitiesUpdated();
+            carRentalEntities = new CarRentalEntitiesUpdated(); // intialized database inside the constructor
         }
 
         private void SubmitButton_Click(object sender, EventArgs e)
