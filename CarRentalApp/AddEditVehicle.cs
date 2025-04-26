@@ -45,35 +45,43 @@ namespace CarRentalApp
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //if(isEditMode == true)
-            if (isEditMode)
+            try
             {
-                // Edit code
-                var id = int.Parse(lblid.Text);
-                var car = _db.TypesOfCars.FirstOrDefault(q => q.id == id );
-                car.Model = tbModel.Text;
-                car.Make = tbMake.Text;
-                car.VIN = tbVin.Text;
-                car.Year = int.Parse(tbYear.Text);
-                car.LicensePlateNumber = tbLicenseNum.Text;
-
-                _db.SaveChanges();
-            }
-            else 
-            {
-                // Add codde
-                var newCar = new TypesOfCar
+                //if(isEditMode == true)
+                if (isEditMode)
                 {
-                    LicensePlateNumber = tbLicenseNum.Text,
-                    Make = tbMake.Text,
-                    Model = tbModel.Text,
-                    VIN = tbVin.Text,
-                    Year = int.Parse(tbYear.Text)
+                    // Edit code
+                    var id = int.Parse(lblid.Text);
+                    var car = _db.TypesOfCars.FirstOrDefault(q => q.id == id);
+                    car.Model = tbModel.Text;
+                    car.Make = tbMake.Text;
+                    car.VIN = tbVin.Text;
+                    car.Year = int.Parse(tbYear.Text);
+                    car.LicensePlateNumber = tbLicenseNum.Text;
 
-                };
+                    _db.SaveChanges();
+                }
+                else
+                {
+                    // Add codde
+                    var newCar = new TypesOfCar
+                    {
+                        LicensePlateNumber = tbLicenseNum.Text,
+                        Make = tbMake.Text,
+                        Model = tbModel.Text,
+                        VIN = tbVin.Text,
+                        Year = int.Parse(tbYear.Text)
 
-                _db.TypesOfCars.Add(newCar);
-                _db.SaveChanges();
+                    };
+
+                    _db.TypesOfCars.Add(newCar);
+                    _db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw new Exception();
             }
         }
 
