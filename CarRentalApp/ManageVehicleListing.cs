@@ -24,12 +24,23 @@ namespace CarRentalApp
         {
             //Select * From TypesOfCars
             //var cars = _db.TypesOfCars.ToList();
+
+            //var cars = _db.TypesOfCars
+            //    .Select(q => new { CarId = q.Id, CarName = q.Name }) //lambda expression
+            //    .ToList();
+
             var cars = _db.TypesOfCars
-                .Select(q => new { CarId = q.id, CarName = q.name }) //lambda expression
-                .ToList();
+                .Select(q => new 
+                { 
+                    Make = q.Make,
+                    Model = q.Model,
+                    VIN = q.VIN,
+                    Year = q.Year,
+                    LicensePlateNumber = q.LicensePlateNumber
+                }).ToList();
             gvVehicleList.DataSource = cars;
-            gvVehicleList.Columns[0].HeaderText = "ID";
-            gvVehicleList.Columns[1].HeaderText = "NAME";
+            //gvVehicleList.Columns[0].HeaderText = "ID";
+            //gvVehicleList.Columns[1].HeaderText = "NAME";
         }
 
         private void btnAddCar_Click(object sender, EventArgs e)
