@@ -34,14 +34,23 @@ namespace CarRentalApp
 
         private void PopulateFields(TypesOfCar car)
         {
-           lblTitle.Text = car.id.ToString();
-           tbMake.Text = car.Make;
-           tbModel.Text = car.Model;
-           tbVin.Text = car.VIN;
-           tbYear.Text = car.Year.ToString();
-           tbLicenseNum.Text = car.LicensePlateNumber;
+            lblTitle.Text = car.id.ToString();
+            tbMake.Text = car.Make;
+            tbModel.Text = car.Model;
+            tbVin.Text = car.VIN;
+            tbYear.Text = car.Year.ToString();
+            tbLicenseNum.Text = car.LicensePlateNumber;
 
+            if (!string.IsNullOrWhiteSpace(tbMake.Text) && !string.IsNullOrWhiteSpace(tbModel.Text))
+            {
+                // Both tbMake and tbModel have text
+            }
+            else
+            {
+                MessageBox.Show("Please enter both Make and Model.");
+            }
         }
+
 
         private void btnSave_Click(object sender, EventArgs e)
         {

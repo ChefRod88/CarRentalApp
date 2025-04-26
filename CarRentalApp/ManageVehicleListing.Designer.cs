@@ -41,7 +41,7 @@
             // gvVehicleList
             // 
             this.gvVehicleList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvVehicleList.Location = new System.Drawing.Point(12, 74);
+            this.gvVehicleList.Location = new System.Drawing.Point(24, 100);
             this.gvVehicleList.Name = "gvVehicleList";
             this.gvVehicleList.Size = new System.Drawing.Size(547, 195);
             this.gvVehicleList.TabIndex = 0;
@@ -59,7 +59,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(50, 21);
+            this.label2.Location = new System.Drawing.Point(131, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(318, 39);
             this.label2.TabIndex = 2;
@@ -68,7 +68,7 @@
             // btnAddCar
             // 
             this.btnAddCar.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddCar.Location = new System.Drawing.Point(12, 275);
+            this.btnAddCar.Location = new System.Drawing.Point(12, 313);
             this.btnAddCar.Name = "btnAddCar";
             this.btnAddCar.Size = new System.Drawing.Size(75, 33);
             this.btnAddCar.TabIndex = 3;
@@ -78,7 +78,7 @@
             // 
             // btnEditCar
             // 
-            this.btnEditCar.Location = new System.Drawing.Point(159, 275);
+            this.btnEditCar.Location = new System.Drawing.Point(233, 313);
             this.btnEditCar.Name = "btnEditCar";
             this.btnEditCar.Size = new System.Drawing.Size(75, 33);
             this.btnEditCar.TabIndex = 4;
@@ -88,7 +88,7 @@
             // 
             // btnDeleteCar
             // 
-            this.btnDeleteCar.Location = new System.Drawing.Point(316, 276);
+            this.btnDeleteCar.Location = new System.Drawing.Point(458, 314);
             this.btnDeleteCar.Name = "btnDeleteCar";
             this.btnDeleteCar.Size = new System.Drawing.Size(75, 32);
             this.btnDeleteCar.TabIndex = 5;
@@ -98,7 +98,7 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(484, 276);
+            this.btnRefresh.Location = new System.Drawing.Point(24, 63);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(75, 32);
             this.btnRefresh.TabIndex = 6;
