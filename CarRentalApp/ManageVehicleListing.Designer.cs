@@ -42,7 +42,7 @@
             this.gvVehicleList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvVehicleList.Location = new System.Drawing.Point(12, 74);
             this.gvVehicleList.Name = "gvVehicleList";
-            this.gvVehicleList.Size = new System.Drawing.Size(565, 195);
+            this.gvVehicleList.Size = new System.Drawing.Size(494, 195);
             this.gvVehicleList.TabIndex = 0;
             // 
             // label1
@@ -77,7 +77,7 @@
             // 
             // btnEditCar
             // 
-            this.btnEditCar.Location = new System.Drawing.Point(93, 312);
+            this.btnEditCar.Location = new System.Drawing.Point(221, 314);
             this.btnEditCar.Name = "btnEditCar";
             this.btnEditCar.Size = new System.Drawing.Size(75, 33);
             this.btnEditCar.TabIndex = 4;
@@ -87,7 +87,7 @@
             // 
             // btnDeleteCar
             // 
-            this.btnDeleteCar.Location = new System.Drawing.Point(174, 313);
+            this.btnDeleteCar.Location = new System.Drawing.Point(431, 314);
             this.btnDeleteCar.Name = "btnDeleteCar";
             this.btnDeleteCar.Size = new System.Drawing.Size(75, 32);
             this.btnDeleteCar.TabIndex = 5;
@@ -99,7 +99,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(589, 358);
+            this.ClientSize = new System.Drawing.Size(519, 358);
             this.Controls.Add(this.btnDeleteCar);
             this.Controls.Add(this.btnEditCar);
             this.Controls.Add(this.btnAddCar);

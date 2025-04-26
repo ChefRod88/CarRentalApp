@@ -58,6 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Add Edit Vehicle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add Edit Vehicle.Designer.cs">
+      <DependentUpon>Add Edit Vehicle.cs</DependentUpon>
+    </Compile>
     <Compile Include="CarRentalDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -99,6 +105,9 @@
     <Compile Include="TypesOfCar.cs">
       <DependentUpon>CarRentalDb.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Add Edit Vehicle.resx">
+      <DependentUpon>Add Edit Vehicle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddRentalRecord.resx">
       <DependentUpon>AddRentalRecord.cs</DependentUpon>
     </EmbeddedResource>
