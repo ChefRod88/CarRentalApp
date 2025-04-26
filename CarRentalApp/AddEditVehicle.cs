@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace CarRentalApp
 {
-    public partial class Add_Edit_Vehicle : Form
+    public partial class AddEditVehicle : Form
     {
         private bool isEditMode;
         private readonly CarRentalEntitiesUpdated _db;
-        public Add_Edit_Vehicle()
+        public AddEditVehicle()
         {
             InitializeComponent();
             lblTitle.Text = "Add New Vehicle";
@@ -22,36 +22,35 @@ namespace CarRentalApp
             _db = new CarRentalEntitiesUpdated();
         }
 
-        public Add_Edit_Vehicle(TypesOfCar carToEdit)
+        public AddEditVehicle(TypesOfCar carToEdit)
         {
             InitializeComponent();
-            _db = new CarRentalEntitiesUpdated();
-
             lblTitle.Text = "Edit Vehicle";
-            PopulateFields(carToEdit);
             isEditMode = true;
-
-
+            _db = new CarRentalEntitiesUpdated();
+            PopulateFields(carToEdit);
+            
         }
 
         private void PopulateFields(TypesOfCar car)
         {
-            lblId.Text = car.id.ToString();
-            tbMake.Text = car.Make;
-            tbModel.Text = car.Model;
-            Vin.Text = car.VIN;
-            Year.Text = car.Year.ToString();
-            LicenseNum.Text = car.LicensePlateNumber;
+           lblTitle.Text = car.id.ToString();
+           tbMake.Text = car.Make;
+           tbModel.Text = car.Model;
+           tbVin.Text = car.VIN;
+           tbYear.Text = car.Year.ToString();
+           tbLicenseNum.Text = car.LicensePlateNumber;
+
         }
 
-        private void btnSaveChanges_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
-            // if(isEditMode == true)
-            if (isEditMode) 
-            { 
-                // Edit Code here
-                var id = int.Parse(lblTitle.Text);
-                var car = _db.TypesOfCars.FirstOrDefault(q => q.id == id);
+            //if(isEditMode == true)
+            if (isEditMode)
+            {
+                // Edit code
+                var id = int.Parse(lblid.Text);
+                var car = _db.TypesOfCars.FirstOrDefault(q => q.id == id );
                 car.Model = tbModel.Text;
                 car.Make = tbMake.Text;
                 car.VIN = tbVin.Text;
@@ -59,20 +58,20 @@ namespace CarRentalApp
                 car.LicensePlateNumber = tbLicenseNum.Text;
 
                 _db.SaveChanges();
-
             }
-            else
+            else 
             {
-              
-                // Add Code Here
+                // Add codde
                 var newCar = new TypesOfCar
                 {
                     LicensePlateNumber = tbLicenseNum.Text,
                     Make = tbMake.Text,
                     Model = tbModel.Text,
                     VIN = tbVin.Text,
-                    Year = int.Parse(tbYear.Text),
+                    Year = int.Parse(tbYear.Text)
+
                 };
+
                 _db.TypesOfCars.Add(newCar);
                 _db.SaveChanges();
             }
@@ -82,5 +81,7 @@ namespace CarRentalApp
         {
             Close();
         }
+
+        
     }
 }

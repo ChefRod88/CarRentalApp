@@ -49,30 +49,31 @@ namespace CarRentalApp
 
         private void btnAddCar_Click(object sender, EventArgs e)
         {
-            var add_Edit_Vehicle = new Add_Edit_Vehicle();
-            add_Edit_Vehicle.MdiParent = this.MdiParent;
-            add_Edit_Vehicle.Show();
+            var addEditVehicle = new AddEditVehicle();
+            addEditVehicle.MdiParent = this.MdiParent;
+            addEditVehicle.Show();
         }
 
         private void btnEditCar_Click(object sender, EventArgs e)
         {
             // get Id of selected row
-            var id = (int)gvVehicleList.SelectedRows[0].Cells["Id"].Value;
+            
+            var id = (int)gvVehicleList.SelectedRows[0].Cells["id"].Value;
 
             //query database for record
             var car = _db.TypesOfCars.FirstOrDefault(q => q.id == id);
 
 
             //launch AddEditVheicle window with data
-            var add_Edit_Vehicle = new Add_Edit_Vehicle(car);
-            add_Edit_Vehicle.MdiParent = this.MdiParent;
-            add_Edit_Vehicle.Show();
+            var addEditVehicle = new AddEditVehicle(car);
+            addEditVehicle.MdiParent = this.MdiParent;
+            addEditVehicle.Show();
         }
 
         private void btnDeleteCar_Click(object sender, EventArgs e)
         {
             // get Id of selected row
-            var id = (int)gvVehicleList.SelectedRows[0].Cells["Id"].Value;
+            var id = (int)gvVehicleList.SelectedRows[0].Cells["id"].Value;
 
             //query database for record
             var car = _db.TypesOfCars.FirstOrDefault(q => q.id == id);
