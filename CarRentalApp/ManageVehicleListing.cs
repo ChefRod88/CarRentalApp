@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +12,7 @@ namespace CarRentalApp
     public partial class ManageVehicleListing : Form
     {
         private readonly CarRentalEntitiesUpdated _db;
+
         public ManageVehicleListing()
         {
             InitializeComponent();
@@ -22,79 +21,89 @@ namespace CarRentalApp
 
         private void ManageVehicleListing_Load(object sender, EventArgs e)
         {
-            //Select * From TypesOfCars
-            //var cars = _db.TypesOfCars.ToList();
-
-            //var cars = _db.TypesOfCars
-            //    .Select(q => new { CarId = q.Id, CarName = q.Name }) //lambda expression
-            //    .ToList();
-
-            var cars = _db.TypesOfCars
-                .Select(q => new 
-                { 
-                    q.Make, //custom name is same 
-                    q.Model,
-                    q.VIN,
-                    q.Year,
-                    q.LicensePlateNumber,
-                    q.id,
-                })
-                .ToList();
-            gvVehicleList.DataSource = cars;
-            gvVehicleList.Columns[4].HeaderText = "License Plate Number"; // custom header text
-            gvVehicleList.Columns[5].Visible = false; // its there but it will not show up
-            //gvVehicleList.Columns[0].HeaderText = "ID";
-            //gvVehicleList.Columns[1].HeaderText = "NAME";
+            PopulateGrid();
         }
 
         private void btnAddCar_Click(object sender, EventArgs e)
         {
-            var addEditVehicle = new AddEditVehicle();
-            addEditVehicle.MdiParent = this.MdiParent;
-            addEditVehicle.Show();
+            try
+            {
+                var addEditVehicle = new AddEditVehicle();
+                addEditVehicle.MdiParent = this.MdiParent;
+                addEditVehicle.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnEditCar_Click(object sender, EventArgs e)
         {
-            // get Id of selected row
-            
-            var id = (int)gvVehicleList.SelectedRows[0].Cells["id"].Value;
+            try
+            {
+                var id = (int)gvVehicleList.SelectedRows[0].Cells["Id"].Value;
+                var car = _db.TypesOfCars.FirstOrDefault(q => q.id == id);
 
-            //query database for record
-            var car = _db.TypesOfCars.FirstOrDefault(q => q.id == id);
-
-
-            //launch AddEditVheicle window with data
-            var addEditVehicle = new AddEditVehicle(car);
-            addEditVehicle.MdiParent = this.MdiParent;
-            addEditVehicle.Show();
+                if (car != null)
+                {
+                    var addEditVehicle = new AddEditVehicle(car);
+                    addEditVehicle.MdiParent = this.MdiParent;
+                    addEditVehicle.Show();
+                }
+            }
+            catch (InvalidCastException ex)
+            {
+                MessageBox.Show($"Invalid data type encountered: {ex.Message}", "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show($"No row is selected: {ex.Message}", "Selection Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnDeleteCar_Click(object sender, EventArgs e)
         {
-            // get Id of selected row
-            var id = (int)gvVehicleList.SelectedRows[0].Cells["id"].Value;
+            try
+            {
+                var id = (int)gvVehicleList.SelectedRows[0].Cells["Id"].Value;
+                var car = _db.TypesOfCars.FirstOrDefault(q => q.id == id);
 
-            //query database for record
-            var car = _db.TypesOfCars.FirstOrDefault(q => q.id == id);
+                if (car != null)
+                {
+                    var confirmResult = MessageBox.Show(
+                        "Are you sure you want to delete this car?",
+                        "Confirm Delete",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning);
 
-            //delete vehicle from table
-            _db.TypesOfCars.Remove(car);
-            _db.SaveChanges();
-
-            gvVehicleList.Refresh();
-
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        _db.TypesOfCars.Remove(car);
+                        _db.SaveChanges();
+                        PopulateGrid();
+                    }
+                    // If user clicks "No", nothing happens
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An unexpected error occurred while deleting: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            // Simple Refresh Option
             PopulateGrid();
         }
 
         public void PopulateGrid()
         {
-            // Select a custom model collection of cars from database
             var cars = _db.TypesOfCars
                 .Select(q => new
                 {
@@ -103,15 +112,24 @@ namespace CarRentalApp
                     VIN = q.VIN,
                     Year = q.Year,
                     LicensePlateNumber = q.LicensePlateNumber,
-                    q.id
+                    Id = q.id
                 })
                 .ToList();
+
             gvVehicleList.DataSource = cars;
-            gvVehicleList.Columns[4].HeaderText = "License Plate Number";
-            //Hide the column for ID. Changed from the hard coded column value to the name, 
-            // to make it more dynamic. 
+
+            // Set column headers
+            gvVehicleList.Columns["Make"].HeaderText = "Make";
+            gvVehicleList.Columns["Model"].HeaderText = "Model";
+            gvVehicleList.Columns["VIN"].HeaderText = "VIN";
+            gvVehicleList.Columns["Year"].HeaderText = "Year";
+            gvVehicleList.Columns["LicensePlateNumber"].HeaderText = "License Plate Number";
+
+            // Hide the ID column
             gvVehicleList.Columns["Id"].Visible = false;
+
+            // Auto-size the columns to fill the grid
+            gvVehicleList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }
-    
 }
